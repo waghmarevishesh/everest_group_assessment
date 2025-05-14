@@ -19,7 +19,7 @@ git clone https://github.com/your-username/everest_group_assessment.git
 cd everest_group_assessment
 ```
 
-##Backend setup
+## Backend setup
 
 1. You need Python 3.7+ on your machine.
 2. Run pip install pipenv
