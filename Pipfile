@@ -8,6 +8,7 @@ fastapi = "*"
 pydantic = "*"
 requests = "*"
 uvicorn = "*"
+pymysql = "*"
 
 [dev-packages]
 
