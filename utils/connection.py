@@ -1,15 +1,20 @@
 import pymysql.cursors
 import logging
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def connect_db():
     try:
         logging.info("attempting db connecttion")
 
         connection = pymysql.connect(host='localhost',
-                    user='root',
-                    password='28317100',
-                    database='showcase_db',
-                    cursorclass=pymysql.cursors.DictCursor)
+                        user=os.getenv('DB_USER'),
+                        password=os.getenv('DB_PASSWORD'),
+                        database=os.getenv('DB_NAME'),
+                        cursorclass=pymysql.cursors.DictCursor)
         logging.info("DB connection successful")
         return connection
         
