@@ -31,9 +31,11 @@ def add_project(request: Request, body: Project, db = Depends(connection.connect
         cursor = db.cursor()
         technologies = ", ".join(body.technologies) if body.technologies else ""
         cursor.execute("INSERT INTO PROJECTS(name, description, technologies, image_url) VALUES( %s, %s, %s, %s)", (body.name, body.description, technologies, body.image_url))
+        db.commit()
         return {
             "response": "Project added successfuly"
         }
+    
     except db.Error as err:
         logging.info(f"Error in query", str(err))
         raise HTTPException(status_code=500, detail=f"Error while adding the project {str(err)}")
